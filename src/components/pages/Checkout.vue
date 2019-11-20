@@ -245,7 +245,7 @@ export default {
     },
     created () {
         this.getCart();
-        this.$bus.$emit('messsage:push','訊息', 'success');
+        // this.$bus.$emit('messsage:push','訊息', 'success');
         this.$bus.$on('regetCart', () => {
             this.getCart();
             console.log('emit on');
