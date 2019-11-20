@@ -29,7 +29,7 @@
                                     data-toggle="tooltip" data-placement="top" 
                                     title="已入購物車">
                                 加到購物車
-                                <i v-if="status.getProductId == item.id" class="fas fa-spinner fa-spin"></i>
+                                <i v-if="status.getProductId" class="fas fa-spinner fa-spin"></i>
                             </button>
                         </div><!-- cart-->
                     

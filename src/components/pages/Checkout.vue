@@ -111,7 +111,7 @@
                                     <div>
                                         <a href="javascript:;" class="btn" @click.prevent="delCart(item.id)">
                                             <i class="fas fa-spinner fa-spin text-primary"
-                                                v-if="status.delitem == item.id"></i>
+                                                v-if="status.delitem"></i>
                                             <i class="far fa-trash-alt text-primary" v-else></i>
                                         </a>
                                     </div>

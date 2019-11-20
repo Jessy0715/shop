@@ -27,7 +27,7 @@
 					<p>
                         <a href="#" class="btn btn-dark mt-3 py-2 px-4 rounded-pill"
                         @click.prevent="addToCart(product.id)">
-                        <i v-if="status.getProductId == product.id" class="fas fa-spinner fa-spin"></i>
+                        <i v-if="status.getProductId" class="fas fa-spinner fa-spin"></i>
                         加入購物車</a>
                     </p>
 				</div><!--collg6-->

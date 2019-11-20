@@ -47,7 +47,7 @@
                                         <td width="50" class="align-middle ">
                                             <a href="javascript:;" @click.prevent="delCart(item.id)">
                                                 <i class="fas fa-spinner fa-spin"
-                                                    v-if="status.delitem == item.id"></i>
+                                                    v-if="status.delitem"></i>
                                                 <i class="fa fa-trash-alt" v-else></i>
                                             </a>
                                         </td>
