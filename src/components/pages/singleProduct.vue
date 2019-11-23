@@ -75,7 +75,7 @@ export default {
                 }
             });
         },
-        addToCart (id) {
+        addToCart (id, qty ) {
             const vm = this;
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
             const cart = {

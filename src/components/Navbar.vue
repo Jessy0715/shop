@@ -28,7 +28,7 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <router-link class="nav-link" to="/admin/products">
-                    管理商品
+                    後台管理
                 </router-link>
             </li> 
             <li>
@@ -38,10 +38,12 @@
                         <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
                         <span class="sr-only">unread messages</span>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-right" style="min-width: 300px">
+                    <div class="dropdown-menu dropdown-menu-right" 
+                         style="min-width: 300px"
+                         v-if="cart.carts.length">
                         <div class="px-4 py-3">
                             <h6>已選擇商品</h6>
-                            <table class="table table-sm">
+                            <table class="table table-sm" v-if="cart.carts.length">
                                 <tbody>
                                     <tr v-for="item in cart.carts" :key="item.id">
                                         <td width="50" class="align-middle ">
@@ -64,9 +66,14 @@
                             <router-link to="/checkout" class="btn btn-primary btn-block">
                                 <i aria-hidden="true"></i> 結帳去
                             </router-link>
-                        </div>
+                        </div><!-- px-4-->
+                    </div><!-- dropdown menu-->
+                    <div class="dropdown-menu dropdown-menu-right"
+                         style="min-width: 300px"
+                         v-else>
+                         <span class="pl-3">目前購物車空無一物</span>
                     </div>
-                </div><!-- dropdown box-->
+                </div><!-- dropdown-->
             </li>
         </ul>
 

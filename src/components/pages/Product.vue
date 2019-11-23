@@ -69,7 +69,7 @@ export default {
     singleProduct(id){
         this.$router.push(`/products/${id}`);
     },
-    addToCart(id){
+    addToCart(id, qty){
         const vm = this;
         const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
         const cart = {
@@ -106,7 +106,7 @@ export default {
     box-shadow:0 0.125rem 0.85rem rgba(0,0,0,.095);
     &:hover{
         box-shadow: 0 8px 24px #b9b9b9;
-       
+        cursor:pointer;
     }
 
 }
