@@ -19,10 +19,10 @@
         </div>
     </section>
     <!--intro-->
-  <section class="container-fluid py-0 px-0 bg-light" >
+  <section class="container-fluid bg-light" >
     <div class="row pd-bg bg-cover">
-      <div class="col-md-6">
-        <img src="../assets/images/db04.jpg" height="375" />
+      <div class="col-md-6 px-0">
+        <img class="img-fluid" src="../assets/images/db04.jpg"/>
       </div>
       <div class="col-md-6 align-self-center mt-5 mt-md-0 ">
         <div class="row justify-content-center">
@@ -36,10 +36,10 @@
     </div>
   </section>
    <!--intro2-->
-  <section class="container-fluid bg-light">
+   <section class="container-fluid bg-light">
     <div class="row flex-row-reverse pd-bg bg-cover">
-      <div class="col-md-6">
-        <img src="../assets/images/db05.jpg" height="380"/>
+      <div class="col-md-6 px-0">
+        <img class="img-fluid" src="../assets/images/db05.jpg"/>
       </div>
       <div class="col-md-6 align-self-center mt-5 mt-md-0">
         <div class="row justify-content-center">
@@ -192,6 +192,8 @@ export default {
 .pd-img{
   background:url('../assets/images/db03.jpg');
 }
+
+
 
 .pd-bg{
   background:url('../assets/images/db_bg.jpg');

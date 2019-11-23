@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 	<!-- Start Section -->
-            <section class="fact-area section-gap-top">
+            <section class="fact-area section-gap-top mt-5">
                     <div class="fact-box">
                         <div class="row align-items-center">
                             <div class="col single-fact">

@@ -28,7 +28,7 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <router-link class="nav-link" to="/admin/products">
-                    後台管理
+                    管理商品
                 </router-link>
             </li> 
             <li>

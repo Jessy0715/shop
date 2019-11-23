@@ -28,7 +28,7 @@
                                     @mouseover="alertAddcart(item.id)"
                                     data-toggle="tooltip" data-placement="top" 
                                     title="已入購物車">
-                                加到購物車
+                                加入購物車
                                 <i v-if="status.getProductId" class="fas fa-spinner fa-spin"></i>
                             </button>
                         </div><!-- cart-->
@@ -106,6 +106,7 @@ export default {
     box-shadow:0 0.125rem 0.85rem rgba(0,0,0,.095);
     &:hover{
         box-shadow: 0 8px 24px #b9b9b9;
+       
     }
 
 }

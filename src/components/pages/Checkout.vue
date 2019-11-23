@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 	<!-- Start Section -->
-            <section class="fact-area section-gap-top">
+            <section class="fact-area section-gap-top mt-5">
                     <div class="fact-box">
                         <div class="row align-items-center">
                             <div class="col single-fact active">
@@ -221,7 +221,7 @@ export default {
                     if (response.data.success) {
                         vm.$router.push(`/payment/${response.data.orderId}`);
                     } else {
-                        vm.$bus.$emit('messsage:push', response.data.message,'danger');
+                        vm.$bus.$emit('message:push', response.data.message,'danger');
                         }
                     })
                 }
@@ -235,7 +235,7 @@ export default {
                 if (response.data.success) {
                     vm.getCart();
                 }else{
-                    vm.$bus.$emit('messsage:push', response.data.message);
+                    vm.$bus.$emit('message:push', response.data.message);
                 }
 
             });
