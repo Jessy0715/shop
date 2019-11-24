@@ -154,6 +154,7 @@
 <script>
 import $ from 'jquery';
 import Alert from '../Alert.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 
 export default {
@@ -210,6 +211,9 @@ export default {
                 }
             });
         },
+        // delCart (id) {
+        //     this.$store.dispatch('cartsModules/delCart', id);
+        // },
         submitOrder () {
             const vm = this;
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`; 

@@ -24,7 +24,7 @@
                         </div><!-- price-->
                         <div class="d-flex flex-column justify-content-center">
                             <button type="button" class="btn btn-outline-danger btn-sm"
-                                    @click="addToCart(item.id)" :id="item.id"
+                                    @click="addToCart(item.id,qty)" :id="item.id"
                                     @mouseover="alertAddcart(item.id)"
                                     data-toggle="tooltip" data-placement="top" 
                                     title="已入購物車">
@@ -52,11 +52,13 @@
 
 <script>
 import $ from 'jquery';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     props: ['products'],
     data(){
         return {
+            qty: 1,
             status: {
                 getProductId: false,
             }
@@ -69,22 +71,25 @@ export default {
     singleProduct(id){
         this.$router.push(`/products/${id}`);
     },
-    addToCart(id, qty){
-        const vm = this;
-        const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
-        const cart = {
-            'product_id': id,
-            'qty': 1,
-        }
-        vm.status.getProductId = true;
-        this.$http.post(api, { data: cart }).then((response) => {
-            console.log(response.data);
-            if (response.data.success) {
-                vm.status.getProductId = false;
-            }
-        });
-        this.$bus.$emit('regetCart');
+    // addToCart(id, qty){
+    //     const vm = this;
+    //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
+    //     const cart = {
+    //         'product_id': id,
+    //         'qty': 1,
+    //     }
+    //     vm.status.getProductId = true;
+    //     this.$http.post(api, { data: cart }).then((response) => {
+    //         console.log(response.data);
+    //         if (response.data.success) {
+    //             vm.status.getProductId = false;
+    //         }
+    //     });
+    //     this.$bus.$emit('regetCart');
 
+    // },
+    addToCart (id, qty = 1) {
+      this.$store.dispatch('cartsModules/addToCart', { id, qty })
     },
     alertAddcart (id) {
         $(`#${id}`).tooltip({

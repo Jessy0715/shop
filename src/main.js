@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 //第三方套件
 import Vue from 'vue';
+import Vuex from 'vuex';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Loading from 'vue-loading-overlay';
@@ -12,6 +13,7 @@ import 'bootstrap';
 //自定義
 import App from './App';
 import router from './router';
+import store from './store/store';
 import './bus'; 
 import currencyFilter from './filters/currency';
 import dateFilter from './filters/date';
@@ -22,6 +24,7 @@ import TW from 'vee-validate/dist/locale/zh_TW';
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
+Vue.use(Vuex);
 
 Vue.use(VeeValidate);  //啟用API
 Validator.localize('zh-TW', TW);  //啟用語言包
@@ -44,6 +47,7 @@ axios.defaults.withCredentials = true;  //cookie
 new Vue({
   // i18n,
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>'

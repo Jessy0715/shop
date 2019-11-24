@@ -26,7 +26,7 @@
 					</div><!--row-->
 					<p>
                         <a href="#" class="btn btn-dark mt-3 py-2 px-4 rounded-pill"
-                        @click.prevent="addToCart(product.id)">
+                        @click.prevent="addToCart(product.id,qty)">
                         <i v-if="status.getProductId" class="fas fa-spinner fa-spin"></i>
                         加入購物車</a>
                     </p>
@@ -42,6 +42,7 @@
 <script>
 import $ from 'jquery';
 import Numcount from './Numcount.vue'
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     data () {
@@ -50,6 +51,7 @@ export default {
             pdId: '',
             isLoading: false,
             buyNum:1,
+            qty: 1,
             status: {
                 getProductId: false,
             },
@@ -75,22 +77,25 @@ export default {
                 }
             });
         },
-        addToCart (id, qty ) {
-            const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
-            const cart = {
-                'product_id': id,
-                'qty': vm.buyNum,
-            }
-            vm.status.getProductId = true;
-            this.$http.post(api, { 'data': cart }).then((response) => {
-                console.log(response.data);
-                if (response.data.success) {
-                    vm.status.getProductId = false;
-                }
+        // addToCart (id, qty ) {
+        //     const vm = this;
+        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
+            // const cart = {
+            //     'product_id': id,
+            //     'qty': vm.buyNum,
+            // }
+        //     vm.status.getProductId = true;
+        //     this.$http.post(api, { 'data': cart }).then((response) => {
+        //         console.log(response.data);
+        //         if (response.data.success) {
+        //             vm.status.getProductId = false;
+        //         }
 
-            });
-            this.$bus.$emit('regetCart');
+        //     });
+        //     this.$bus.$emit('regetCart');
+        // },
+        addToCart (id, qty) {
+            this.$store.dispatch('cartsModules/addToCart', { id, qty })
         },
         buyAmount(num){
             this.buyNum = num;

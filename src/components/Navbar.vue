@@ -36,6 +36,7 @@
                     <button class="btn btn-sm btn-cart" data-toggle="dropdown" data-flip="false">
                         <i class="fa fa-shopping-cart fa-2x text-primary" aria-hidden="true"></i>
                         <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
+                        <!--<span class="badge badge-pill badge-danger">{{cartstotal}}</span>-->
                         <span class="sr-only">unread messages</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" 
@@ -84,7 +85,8 @@
 </template>
 
 <script>
-import $ from 'jquery'
+import $ from 'jquery';
+// import { mapGetters, mapActions } from 'vuex';
 
 export default {
     data () {
@@ -124,6 +126,9 @@ export default {
         },
 
     },
+    // computed: {
+    //     ...mapGetters('cartsModules', ['cart', 'cartstotal'])
+    // },
     created () {
         this.getCart();
         this.$bus.$on('regetCart', () => {
