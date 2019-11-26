@@ -35,8 +35,8 @@
                 <div class="dropdown ml-auto">
                     <button class="btn btn-sm btn-cart" data-toggle="dropdown" data-flip="false">
                         <i class="fa fa-shopping-cart fa-2x text-primary" aria-hidden="true"></i>
-                        <span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>
-                        <!--<span class="badge badge-pill badge-danger">{{cartstotal}}</span>-->
+                        <!--<span class="badge badge-pill badge-danger">{{cart.carts.length}}</span>-->
+                        <span class="badge badge-pill badge-danger">{{cartstotal}}</span>
                         <span class="sr-only">unread messages</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" 
@@ -86,14 +86,14 @@
 
 <script>
 import $ from 'jquery';
-// import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     data () {
         return {
-            cart: {
-                carts: [],  
-            },
+            // cart: {
+            //     carts: [],  
+            // },
             status: {
                 delitem: false,
             },
@@ -102,33 +102,35 @@ export default {
      
     },
     methods: {
-        getCart () {
-            const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
-            this.$http.get(api).then((response) => {
-                console.log(response.data);
-                if (response.data.success) {
-                    vm.cart = response.data.data;
-                }
-            });
-        },
-        delCart (id) {
-            const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`; 
-            vm.status.delitem = true;
-            this.$http.delete(api).then((response) => {
-                console.log(response.data);
-                if (response.data.success) {
-                    vm.getCart();
-                    vm.status.delitem = false;
-                }
-            });
-        },
+        // getCart () {
+        //     const vm = this;
+        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
+        //     this.$http.get(api).then((response) => {
+        //         console.log(response.data);
+        //         if (response.data.success) {
+        //             vm.cart = response.data.data;
+        //         }
+        //     });
+        // },
+        ...mapActions('cartsModules', ['getCart']),
+        ...mapActions('cartsModules', ['delCart']),
+        // delCart (id) {
+        //     const vm = this;
+        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`; 
+        //     vm.status.delitem = true;
+        //     this.$http.delete(api).then((response) => {
+        //         console.log(response.data);
+        //         if (response.data.success) {
+        //             vm.getCart();
+        //             vm.status.delitem = false;
+        //         }
+        //     });
+        // },
 
     },
-    // computed: {
-    //     ...mapGetters('cartsModules', ['cart', 'cartstotal'])
-    // },
+    computed: {
+        ...mapGetters('cartsModules', ['cart', 'cartstotal'])
+    },
     created () {
         this.getCart();
         this.$bus.$on('regetCart', () => {

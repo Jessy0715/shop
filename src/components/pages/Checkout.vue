@@ -104,8 +104,8 @@
                 <div class="col-lg-4 d-lg-block">
                     <div class="card">
                         <h5 class="card-header bg-lighter text-center text-dark rounded-0 font-weight-bold">
-                            購物清單<span v-if="cart.carts" class="ml-5 text-white badge badge-secondary badge-pill">{{cart.carts.length}}</span></h5>
-                            <div class="card-body">
+                            購物清單<span v-if="cart.carts" class="ml-5 text-white badge badge-secondary badge-pill">{{cartstotal}}</span></h5>
+                            <div class="card-body">                                                                  <!--{{cart.carts.length}}-->
                                 <div class="d-flex justify-content-between mb-3"
                                     v-for="item in cart.carts" :key="item.id">    
                                     <div>
@@ -164,11 +164,11 @@ export default {
         data () {
             return {
                 isLoading: false,
-                cart: {
-                    carts: [],
-                    final_total: 0,
-                    total: 0,
-                },
+                // cart: {
+                //     carts: [],
+                //     final_total: 0,
+                //     total: 0,
+                // },
                 status: {
                     delitem: false,
                 },
@@ -187,30 +187,32 @@ export default {
             }
     },
     methods: {
-         getCart () {
-            const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
-            vm.isLoading = true;
-            this.$http.get(api).then((response) => {
-                console.log(response.data);
-                if (response.data.success) {
-                    vm.cart = response.data.data;
-                    vm.isLoading = false;
-                }
-            });
-        },
-        delCart (id) {
-            const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`; 
-            vm.status.delitem = true;
-            this.$http.delete(api).then((response) => {
-                console.log(response.data);
-                if (response.data.success) {
-                    vm.getCart();
-                    vm.status.delitem = false;
-                }
-            });
-        },
+        //  getCart () {
+        //     const vm = this;
+        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
+        //     vm.isLoading = true;
+        //     this.$http.get(api).then((response) => {
+        //         console.log(response.data);
+        //         if (response.data.success) {
+        //             vm.cart = response.data.data;
+        //             vm.isLoading = false;
+        //         }
+        //     });
+        // },
+        // delCart (id) {
+        //     const vm = this;
+        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`; 
+        //     vm.status.delitem = true;
+        //     this.$http.delete(api).then((response) => {
+        //         console.log(response.data);
+        //         if (response.data.success) {
+        //             vm.getCart();
+        //             vm.status.delitem = false;
+        //         }
+        //     });
+        // },
+        ...mapActions('cartsModules', ['getCart']),
+        ...mapActions('cartsModules', ['delCart']),
         // delCart (id) {
         //     this.$store.dispatch('cartsModules/delCart', id);
         // },
@@ -246,6 +248,9 @@ export default {
 
         },
 
+    },
+    computed: {
+        ...mapGetters('cartsModules', ['cart', 'cartstotal'])
     },
     created () {
         this.getCart();

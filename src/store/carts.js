@@ -4,7 +4,9 @@ export default {
     namespaced: true,
     state: {
       cart: {
-        carts: []
+        carts: [],
+        final_total: 0,
+        total: 0,
       },
       cartsTotal: 0
     },
@@ -31,13 +33,14 @@ export default {
             const cart = {
                 product_id: id,
                 qty
-            }
+              }
             // vm.status.getProductId = true;
-            axios.post(api, { data: cart }).then((response) => {
+            axios.post(api, { data:cart }).then((response) => {
                 // console.log(response.data);
                 context.dispatch('getCart')
             });
         },
+
 
 
     },
