@@ -213,9 +213,7 @@ export default {
         // },
         ...mapActions('cartsModules', ['getCart']),
         ...mapActions('cartsModules', ['delCart']),
-        // delCart (id) {
-        //     this.$store.dispatch('cartsModules/delCart', id);
-        // },
+
         submitOrder () {
             const vm = this;
             const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`; 
