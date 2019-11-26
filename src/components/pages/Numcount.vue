@@ -7,7 +7,8 @@
                 <i class="fa fa-minus"></i>
             </button>
         </span>
-        <input type="text" class="text-center form-control" v-model="qty">
+        <!--<input type="text" class="text-center form-control" v-model="qty">-->
+        <div class="text-center form-control">{{ qty }}</div>
         <span class="input-group-append ml-2">
             <button type="button" class="quantity-right-plus btn"
                     @click="plus">
@@ -46,7 +47,9 @@ export default {
             this.emitNum();
         },
         emitNum(){
-            this.$emit('buyAmount', this.qty)
+            const number = this.qty;
+            // console.log(number);
+            this.$emit('buyAmount', number)
         },
 
     },
