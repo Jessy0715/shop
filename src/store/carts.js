@@ -40,9 +40,6 @@ export default {
                 context.dispatch('getCart')
             });
         },
-
-
-
     },
     mutations:{
         CART (state, payload) {
