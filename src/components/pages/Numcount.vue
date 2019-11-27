@@ -47,11 +47,12 @@ export default {
             this.emitNum();
         },
         emitNum(){
-            const number = this.qty;
-            // console.log(number);
-            this.$emit('buyAmount', number)
+            this.$emit('buyAmount', this.qty)
         },
 
+    },
+    created(){
+        this.$bus.$on("emitGetCount", this.qty)
     },
 
 }
