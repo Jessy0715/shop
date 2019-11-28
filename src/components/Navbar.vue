@@ -102,31 +102,8 @@ export default {
      
     },
     methods: {
-        // getCart () {
-        //     const vm = this;
-        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
-        //     this.$http.get(api).then((response) => {
-        //         console.log(response.data);
-        //         if (response.data.success) {
-        //             vm.cart = response.data.data;
-        //         }
-        //     });
-        // },
         ...mapActions('cartsModules', ['getCart']),
         ...mapActions('cartsModules', ['delCart']),
-        // delCart (id) {
-        //     const vm = this;
-        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`; 
-        //     vm.status.delitem = true;
-        //     this.$http.delete(api).then((response) => {
-        //         console.log(response.data);
-        //         if (response.data.success) {
-        //             vm.getCart();
-        //             vm.status.delitem = false;
-        //         }
-        //     });
-        // },
-
     },
     computed: {
         ...mapGetters('cartsModules', ['cart', 'cartstotal'])

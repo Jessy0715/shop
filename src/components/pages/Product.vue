@@ -70,23 +70,6 @@ export default {
     singleProduct(id){
         this.$router.push(`/products/${id}`);
     },
-    // addToCart(id, qty){
-    //     const vm = this;
-    //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
-    //     const cart = {
-    //         'product_id': id,
-    //         'qty': 1,
-    //     }
-    //     vm.status.getProductId = true;
-    //     this.$http.post(api, { data: cart }).then((response) => {
-    //         console.log(response.data);
-    //         if (response.data.success) {
-    //             vm.status.getProductId = false;
-    //         }
-    //     });
-    //     this.$bus.$emit('regetCart');
-
-    // },
     addToCart (id, qty = 1) {
       this.$store.dispatch('cartsModules/addToCart', { id, qty })
     },

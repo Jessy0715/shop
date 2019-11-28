@@ -187,30 +187,6 @@ export default {
             }
     },
     methods: {
-        //  getCart () {
-        //     const vm = this;
-        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
-        //     vm.isLoading = true;
-        //     this.$http.get(api).then((response) => {
-        //         console.log(response.data);
-        //         if (response.data.success) {
-        //             vm.cart = response.data.data;
-        //             vm.isLoading = false;
-        //         }
-        //     });
-        // },
-        // delCart (id) {
-        //     const vm = this;
-        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`; 
-        //     vm.status.delitem = true;
-        //     this.$http.delete(api).then((response) => {
-        //         console.log(response.data);
-        //         if (response.data.success) {
-        //             vm.getCart();
-        //             vm.status.delitem = false;
-        //         }
-        //     });
-        // },
         ...mapActions('cartsModules', ['getCart']),
         ...mapActions('cartsModules', ['delCart']),
 

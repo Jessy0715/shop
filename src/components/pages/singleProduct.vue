@@ -76,23 +76,6 @@ export default {
                 }
             });
         },
-        // addToCart (id, qty ) {
-        //     const vm = this;
-        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
-            // const cart = {
-            //     'product_id': id,
-            //     'qty': vm.buyNum,
-            // }
-        //     vm.status.getProductId = true;
-        //     this.$http.post(api, { 'data': cart }).then((response) => {
-        //         console.log(response.data);
-        //         if (response.data.success) {
-        //             vm.status.getProductId = false;
-        //         }
-
-        //     });
-        //     this.$bus.$emit('regetCart');
-        // },
         addToCart (id, qty) {
             this.$store.dispatch('cartsModules/addToCart', { id, qty })
         },
