@@ -51,9 +51,7 @@ export default {
         },
 
     },
-    created(){
-        this.$bus.$on("emitGetCount", this.qty)
-    },
+
 
 }
 </script>

@@ -95,11 +95,10 @@ export default {
         //     this.$bus.$emit('regetCart');
         // },
         addToCart (id, qty) {
-            this.$bus.$emit("emitGetCount");
             this.$store.dispatch('cartsModules/addToCart', { id, qty })
         },
         buyAmount(num){
-            this.buyNum = num;
+            this.qty = num;
         },
         back(){
             this.$router.back();
