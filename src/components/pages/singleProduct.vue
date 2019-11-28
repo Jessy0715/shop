@@ -42,7 +42,6 @@
 <script>
 import $ from 'jquery';
 import Numcount from './Numcount.vue'
-import { mapGetters, mapActions } from 'vuex';
 
 export default {
     data () {
